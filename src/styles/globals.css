@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  /* Colores base del tema */
+  --color-lime: #e1ff51;
+  --color-deep-teal: #00272c;
+  --color-red: #fc1a37;
+  --color-offwhite: #fbfcf7;
+  --color-gray: #aeaca9;
+  --color-dark: #4d554a;
+
+  --background: var(--color-offwhite);
+  --foreground: var(--color-deep-teal);
+  --accent: var(--color-lime);
+  --muted: var(--color-gray);
+  --danger: var(--color-red);
+  --dark: var(--color-dark);
+
+  /* Fuentes */
+  --cabinet-grotesk-thin: 'CabinetGrotesk-Thin', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-extralight: 'CabinetGrotesk-Extralight', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-light: 'CabinetGrotesk-Light', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-regular: 'CabinetGrotesk-Regular', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-medium: 'CabinetGrotesk-Medium', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-bold: 'CabinetGrotesk-Bold', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-extrabold: 'CabinetGrotesk-Extrabold', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-black: 'CabinetGrotesk-Black', Arial, Helvetica, sans-serif;
+  --cabinet-grotesk-variable: 'CabinetGrotesk-Variable', Arial, Helvetica, sans-serif;
+}
+
+/* ===========================
+   VARIABLES PARA TAILWIND
+   =========================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-danger: var(--danger);
+  --color-neutro: var(--dark);
+  --font-cabinet-grotesk-thin: var(--cabinet-grotesk-thin);
+  --font-cabinet-grotesk-extralight: var(--cabinet-grotesk-extralight);
+  --font-cabinet-grotesk-light: var(--cabinet-grotesk-light);
+  --font-cabinet-grotesk-regular: var(--cabinet-grotesk-regular);
+  --font-cabinet-grotesk-medium: var(--cabinet-grotesk-medium);
+  --font-cabinet-grotesk-bold: var(--cabinet-grotesk-bold);
+  --font-cabinet-grotesk-extrabold: var(--cabinet-grotesk-extrabold);
+  --font-cabinet-grotesk-black: var(--cabinet-grotesk-black);
+  --font-cabinet-grotesk-variable: var(--cabinet-grotesk-variable);
+}
+
+/* ===========================
+   ESTILOS GENERALES
+   =========================== */
+
+body {
+  background: var(--background);
+  color: var(--accent);
+  /* font-family: var(--font-cabinet-grotesk-variable); */
+}
+
+.underline-center {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.underline-center::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.underline-center:hover::after,
+.underline-center.active::after {
+  left: 0;
+  width: 100%;
+  transform: translateX(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
