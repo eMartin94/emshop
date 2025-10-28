@@ -1,5 +1,6 @@
 import FeaturedSection from '@/components/sections/FeaturedSection';
 import HeroSection from '@/components/sections/HeroSection';
+import NewArrivalsSection from '@/components/sections/NewArrivalsSection';
 
 export default function Home() {
   return (
@@ -7,20 +8,21 @@ export default function Home() {
       <HeroSection />
 
       <FeaturedSection
-        leftImage='https://images.unsplash.com/photo-1728609002332-99b575a42a5c?ixlib=rb-4.1.0'
-        rightImage='https://images.unsplash.com/photo-1745365199049-dd78db8b522e?ixlib=rb-4.1.0'
+        leftImage='https://res.cloudinary.com/dbrzmfber/image/upload/v1761691151/gafas-cover_xi5fj0.webp'
+        rightImage='https://res.cloudinary.com/dbrzmfber/image/upload/v1761691249/gafas-model_bm76gp.webp'
         title='Gafas'
         subtitle='Nueva colección'
         linkPosition='left'
       />
 
       <FeaturedSection
-        leftImage='https://images.unsplash.com/photo-1653651461602-97dde5087f58?ixlib=rb-4.1.0'
-        rightImage='https://images.unsplash.com/photo-1657159810575-95dcfe021c5f?ixlib=rb-4.1.0'
+        leftImage='https://res.cloudinary.com/dbrzmfber/image/upload/v1761691316/reloj-model_gg1zcm.webp'
+        rightImage='https://res.cloudinary.com/dbrzmfber/image/upload/v1761692018/reloj-cover_kzb9qh.webp'
         title='Relojes'
         subtitle='Nueva colección'
         linkPosition='right'
       />
+      <NewArrivalsSection />
     </main>
   );
 }

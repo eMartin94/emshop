@@ -17,7 +17,7 @@ const FeaturedSection = ({
   return (
     <StickySection>
       <div className='flex flex-col items-center justify-center h-full bg-foreground text-white relative'>
-        <div className='w-full grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-1'>
+        <div className='w-full grid grid-cols-1 sm:grid-cols-2'>
           {/* Left Image */}
           <div className='relative'>
             <Image
