@@ -4,7 +4,7 @@ import NewArrivalsSection from '@/components/sections/NewArrivalsSection';
 
 export default function Home() {
   return (
-    <main className='w-full bg-accent text-accent relative'>
+    <>
       <HeroSection />
 
       <FeaturedSection
@@ -23,6 +23,6 @@ export default function Home() {
         linkPosition='right'
       />
       <NewArrivalsSection />
-    </main>
+    </>
   );
 }

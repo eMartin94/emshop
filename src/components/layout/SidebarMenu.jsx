@@ -1,11 +1,13 @@
 'use client';
 
-import { categorias } from '@/data';
 import { IconChevronDown, IconChevronUp, IconX } from '@tabler/icons-react';
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { categorias } from '@/data/categoriesMenu';
 
 const SidebarMenu = ({ open, onClose }) => {
   const [openCategoria, setOpenCategoria] = useState(null);
+  const [openSubcategoria, setOpenSubcategoria] = useState(null);
 
   return (
     <div
@@ -35,10 +37,10 @@ const SidebarMenu = ({ open, onClose }) => {
       <hr className='w-full border-foreground my-4 sm:hidden' />
 
       <ul className='flex flex-col gap-4 w-full sm:hidden'>
-        {Object.keys(categorias).map((cat) => (
+        {Object.entries(categorias).map(([cat, data]) => (
           <li key={cat}>
             <button
-              className='flex justify-between items-center w-full text-left uppercase font-bold text-gray-800 text-lg'
+              className='flex justify-between items-center w-full text-left uppercase font-bold text-gray-800 text-lg cursor-pointer'
               onClick={() =>
                 setOpenCategoria(openCategoria === cat ? null : cat)
               }
@@ -52,22 +54,55 @@ const SidebarMenu = ({ open, onClose }) => {
             </button>
 
             {openCategoria === cat && (
-              <div className='mt-2 pl-3 border-l border-gray-300'>
-                {Object.entries(categorias[cat]).map(([categoria, subcats]) => (
-                  <div key={categoria} className='mb-2'>
-                    <h4 className='font-semibold text-base capitalize mb-1'>
-                      {categoria}
-                    </h4>
-                    <ul className='flex flex-col gap-1'>
-                      {subcats.map((sub) => (
-                        <li
-                          key={sub}
-                          className='text-sm capitalize text-gray-600 hover:text-foreground cursor-pointer'
+              <div className='mt-2 pl-3 border-l border-muted'>
+                {Object.entries(data.items).map(([itemName, itemData]) => (
+                  <div key={itemName} className='mb-2'>
+                    <div className='flex justify-between items-center'>
+                      <Link
+                        href={itemData.path}
+                        className='font-semibold text-base text-foreground capitalize mb-1 hover:underline'
+                      >
+                        {itemName}
+                      </Link>
+
+                      {itemData.subcategorias && (
+                        <button
+                          onClick={() =>
+                            setOpenSubcategoria(
+                              openSubcategoria === itemName ? null : itemName
+                            )
+                          }
                         >
-                          {sub}
-                        </li>
-                      ))}
-                    </ul>
+                          {openSubcategoria === itemName ? (
+                            <IconChevronUp
+                              size={14}
+                              className='text-foreground'
+                            />
+                          ) : (
+                            <IconChevronDown
+                              size={14}
+                              className='text-foreground'
+                            />
+                          )}
+                        </button>
+                      )}
+                    </div>
+
+                    {itemData.subcategorias &&
+                      openSubcategoria === itemName && (
+                        <ul className='flex flex-col gap-1 ml-3 mt-1'>
+                          {itemData.subcategorias.map((sub) => (
+                            <li key={sub.nombre}>
+                              <Link
+                                href={sub.path}
+                                className='text-sm capitalize text-neutro hover:text-foreground hover:underline cursor-pointer'
+                              >
+                                {sub.nombre}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                   </div>
                 ))}
               </div>

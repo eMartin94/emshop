@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={`font-cabinet-grotesk-variable antialiased`}>
         <Header />
-        {children}
+        <main className='w-full text-accent relative'>{children}</main>
         <Footer />
       </body>
     </html>
